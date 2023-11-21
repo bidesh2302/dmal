@@ -1,0 +1,11 @@
+Running blockMesh on /home/bideshsengupta/OpenFOAM/OpenFOAM-v1812/tutorials/heatTransfer/chtMultiRegionFoam/multiRegionHeater
+Running topoSet on /home/bideshsengupta/OpenFOAM/OpenFOAM-v1812/tutorials/heatTransfer/chtMultiRegionFoam/multiRegionHeater
+Restore 0/ from 0.orig/
+Running splitMeshRegions on /home/bideshsengupta/OpenFOAM/OpenFOAM-v1812/tutorials/heatTransfer/chtMultiRegionFoam/multiRegionHeater
+Running changeDictionary on /home/bideshsengupta/OpenFOAM/OpenFOAM-v1812/tutorials/heatTransfer/chtMultiRegionFoam/multiRegionHeater
+Running changeDictionary on /home/bideshsengupta/OpenFOAM/OpenFOAM-v1812/tutorials/heatTransfer/chtMultiRegionFoam/multiRegionHeater
+Running changeDictionary on /home/bideshsengupta/OpenFOAM/OpenFOAM-v1812/tutorials/heatTransfer/chtMultiRegionFoam/multiRegionHeater
+Running changeDictionary on /home/bideshsengupta/OpenFOAM/OpenFOAM-v1812/tutorials/heatTransfer/chtMultiRegionFoam/multiRegionHeater
+Running changeDictionary on /home/bideshsengupta/OpenFOAM/OpenFOAM-v1812/tutorials/heatTransfer/chtMultiRegionFoam/multiRegionHeater
+
+End

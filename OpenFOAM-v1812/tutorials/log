@@ -1,0 +1,1130 @@
+lagrangian/reactingParcelFoam/parcelInBox/README:Single water droplet
+lagrangian/reactingParcelFoam/rivuletPanel/constant/surfaceFilmProperties:        specie      water;
+lagrangian/reactingParcelFoam/airRecirculationRoom/transient/constant/reactingCloud1Properties:                H2O   1;  // the liquid phase is 100% water
+lagrangian/reactingParcelFoam/airRecirculationRoom/transient/constant/reactingCloud1Properties:        YLiquidTot0     0.8;  // 80% of the droplet is water
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/solid/T:    solid_to_water
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/epsilon.gas:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/U.gas:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/T.gas:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/p_rgh:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/k.liquid:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/alpha.gas:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/U.liquid:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/alphat.gas:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/alpha.liquid:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/epsilon.liquid:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/T.liquid:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/alphat.liquid:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/0.orig/water/k.gas:    water_to_solid
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/Allrun.pre:runApplication setFields -region water
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/system/water/changeDictionaryDict:        "water_to_.*"
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/system/controlDict:        region          water;
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/system/controlDict:        patches         (water_to_solid);
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/system/controlDict:        region          water;
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/system/controlDict:        name            water_to_solid;
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/system/topoSetDict:        name    water;
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/constant/regionProperties:    fluid       (water)
+heatTransfer/chtMultiRegionTwoPhaseEulerFoam/solidQuenching2D/constant/water/phaseProperties:        file                "Tsat_water_1_2bar.csv";
+heatTransfer/chtMultiRegionFoam/windshieldDefrost/system/ice/fvOptions:        L               334000; // enthalpy of fusion for water [J/kg]
+heatTransfer/chtMultiRegionSimpleFoam/heatExchanger/constant/porous/thermophysicalProperties:    // coefficients for water
+multiphase/driftFluxFoam/RAS/mixerVessel2D/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/driftFluxFoam/RAS/mixerVessel2D/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/driftFluxFoam/RAS/mixerVessel2D/constant/transportProperties:phases          (sludge water);
+multiphase/driftFluxFoam/RAS/mixerVessel2D/constant/transportProperties:water
+multiphase/driftFluxFoam/RAS/dahl/constant/transportProperties:phases          (sludge water);
+multiphase/driftFluxFoam/RAS/dahl/constant/transportProperties:water
+multiphase/driftFluxFoam/RAS/tank3D/constant/transportProperties:phases          (sludge water);
+multiphase/driftFluxFoam/RAS/tank3D/constant/transportProperties:water
+multiphase/interPhaseChangeFoam/cavitatingBullet/0.orig/alpha.water:    object      alpha.water;
+multiphase/interPhaseChangeFoam/cavitatingBullet/system/fvSolution:    "alpha.water.*"
+multiphase/interPhaseChangeFoam/cavitatingBullet/constant/transportProperties:phases          (water vapour);
+multiphase/interPhaseChangeFoam/cavitatingBullet/constant/transportProperties:water
+multiphase/twoLiquidMixingFoam/lockExchange/constant/transportProperties:phases (sludge water);
+multiphase/twoLiquidMixingFoam/lockExchange/constant/transportProperties:water
+multiphase/multiphaseInterFoam/laminar/mixerVessel2D/0.orig/alpha.water:    object      alpha.water;
+multiphase/multiphaseInterFoam/laminar/mixerVessel2D/system/controlDict:            alpha.water
+multiphase/multiphaseInterFoam/laminar/mixerVessel2D/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/multiphaseInterFoam/laminar/mixerVessel2D/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/multiphaseInterFoam/laminar/mixerVessel2D/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/multiphaseInterFoam/laminar/mixerVessel2D/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/multiphaseInterFoam/laminar/mixerVessel2D/constant/transportProperties:    water
+multiphase/multiphaseInterFoam/laminar/mixerVessel2D/constant/transportProperties:    (air water) 0.07
+multiphase/multiphaseInterFoam/laminar/mixerVessel2D/constant/transportProperties:    (water oil) 0.07
+multiphase/multiphaseInterFoam/laminar/mixerVessel2D/constant/transportProperties:    (water mercury) 0.07
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/0.orig/alpha.water:    object      alpha.water;
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/constant/transportProperties:     water
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/constant/transportProperties:    (air water) 0.07
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/constant/transportProperties:    (water oil) 0.07
+multiphase/multiphaseInterFoam/laminar/damBreak4phaseFine/constant/transportProperties:    (water mercury) 0.07
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.water:    object      alpha.water;
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/constant/transportProperties:     water
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/constant/transportProperties:    (air water) 0.07
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/constant/transportProperties:    (water oil) 0.07
+multiphase/multiphaseInterFoam/laminar/damBreak4phase/constant/transportProperties:    (water mercury) 0.07
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/0.orig/U.water:    object      U.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/0.orig/U.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/0.orig/T.water:    object      T.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/0.orig/T.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/system/controlDict:            U.water
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:phases          (air water);
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:water
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.5;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumn/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/0.orig/U.water:    object      U.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/0.orig/T.water:    object      T.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:phases          (air water);
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:water
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.5;
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/mixerVessel2D/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/0.orig/U.water:    object      U.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/0.orig/U.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/0.orig/T.water:    object      T.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/0.orig/T.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/system/controlDict:            U.water
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:phases          (air water);
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:water
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.5;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnEvaporatingDissolving/0.orig/water.gas:    object      water.gas;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnEvaporatingDissolving/0.orig/water.liquid:    object      water.liquid;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnEvaporatingDissolving/constant/phaseProperties:        species ( water );
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnEvaporatingDissolving/constant/thermophysicalProperties.liquid:    water
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnEvaporatingDissolving/constant/thermophysicalProperties.liquid:inertSpecie water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnEvaporatingDissolving/constant/thermophysicalProperties.liquid:"(mixture|water)"
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnEvaporatingDissolving/constant/thermophysicalProperties.gas:    water
+multiphase/reactingTwoPhaseEulerFoam/laminar/bubbleColumnEvaporatingDissolving/constant/thermophysicalProperties.gas:water
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/0.orig/water.steam:    object      water.steam;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/0.orig/U.water:    object      U.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/0.orig/U.water:        phi             phi.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/0.orig/alpha.water:    object      alpha.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/0.orig/alpha.water:        phi             phi.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/0.orig/T.water:    object      T.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/0.orig/T.water:        phi             phi.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/0.orig/water.water:    object      water.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/0.orig/water.water:        phi             phi.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/phaseProperties:phases          (steam water);
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/phaseProperties:water
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/phaseProperties:        continuousPhase water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/phaseProperties:    (steam and water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/phaseProperties:    (steam in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/phaseProperties:    (steam in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/phaseProperties:    (steam in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/phaseProperties:    (steam in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/phaseProperties:heatTransfer.water
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/phaseProperties:    (steam in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/steamInjection/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/0.orig/U.water:    object      U.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/0.orig/U.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/0.orig/T.water:    object      T.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/0.orig/T.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:phases          (air water);
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:water
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.5;
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/laminar/injection/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/0.orig/alphat.water:    object      alphat.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/0.orig/epsilon.water:    object      epsilon.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/0.orig/epsilon.water:        phi             phi.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/0.orig/nut.water:    object      nut.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/0.orig/U.water:    object      U.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/0.orig/U.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/0.orig/k.water:    object      k.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/0.orig/k.water:        phi             phi.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/0.orig/T.water:    object      T.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/0.orig/T.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/system/controlDict:            U.water
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:phases          (air water);
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:water
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.5;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumn/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnEvaporatingReacting/constant/reactions.gas:    waterGasShift
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/0.orig/alphat.water:    object      alphat.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/0.orig/epsilon.water:    object      epsilon.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/0.orig/epsilon.water:        phi             phi.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/0.orig/nut.water:    object      nut.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/0.orig/U.water:    object      U.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/0.orig/U.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/0.orig/k.water:    object      k.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/0.orig/k.water:        phi             phi.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/0.orig/T.water:    object      T.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/0.orig/T.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/system/controlDict:            U.water
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:phases          (air water);
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:water
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:        continuousPhase water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.3;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.5;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/bubbleColumnPolydisperse/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/wallBoiling1D/constant/turbulenceProperties.liquid:    object      turbulenceProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/wallBoilingIATE/0.orig/water.gas:    object      water.gas;
+multiphase/reactingTwoPhaseEulerFoam/RAS/wallBoilingIATE/0.orig/water.liquid:    object      water.liquid;
+multiphase/reactingTwoPhaseEulerFoam/RAS/wallBoilingIATE/constant/phaseProperties:        file                "$FOAM_TUTORIALS/resources/dataset/Tsat_water_1_2bar.csv";
+multiphase/reactingTwoPhaseEulerFoam/RAS/wallBoilingIATE/constant/thermophysicalProperties.liquid:    water
+multiphase/reactingTwoPhaseEulerFoam/RAS/wallBoilingIATE/constant/thermophysicalProperties.liquid:inertSpecie water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/wallBoilingIATE/constant/turbulenceProperties.liquid:    object      turbulenceProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/RAS/wallBoiling/constant/phaseProperties:        file                "$FOAM_TUTORIALS/resources/dataset/Tsat_water_1_2bar.csv";
+multiphase/reactingTwoPhaseEulerFoam/RAS/wallBoiling/constant/turbulenceProperties.liquid:    object      turbulenceProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/0.orig/alphat.water:    object      alphat.water;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/0.orig/epsilon.water:        phi             phi.water;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/0.orig/nut.water:    object      nut.water;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/0.orig/U.water:    object      U.water;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/0.orig/U.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/0.orig/k.water:        phi             phi.water;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/0.orig/T.water:    object      T.water;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/0.orig/T.water:        phi                phi.water;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/system/controlDict:            U.water
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:phases          (air water);
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:water
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.5;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/reactingTwoPhaseEulerFoam/LES/bubbleColumn/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/interFoam/laminar/damBreakWithObstacle/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/damBreakWithObstacle/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/damBreakWithObstacle/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/damBreakWithObstacle/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/damBreakWithObstacle/constant/dynamicMeshDict:field           alpha.water;
+multiphase/interFoam/laminar/damBreakWithObstacle/constant/dynamicMeshDict:    (alphaPhi0.water none)
+multiphase/interFoam/laminar/damBreakWithObstacle/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/damBreakWithObstacle/constant/transportProperties:water
+multiphase/interFoam/laminar/damBreak/damBreak/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/damBreak/damBreak/system/sampling:    fields ( alpha.water );
+multiphase/interFoam/laminar/damBreak/damBreak/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/damBreak/damBreak/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/damBreak/damBreak/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/damBreak/damBreak/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/damBreak/damBreak/constant/transportProperties:water
+multiphase/interFoam/laminar/vofToLagrangian/eulerianInjection/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/vofToLagrangian/eulerianInjection/system/fvSolution:    alpha.water
+multiphase/interFoam/laminar/vofToLagrangian/eulerianInjection/system/controlDict:        alpha           alpha.water;
+multiphase/interFoam/laminar/vofToLagrangian/eulerianInjection/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/vofToLagrangian/eulerianInjection/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/vofToLagrangian/eulerianInjection/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/vofToLagrangian/eulerianInjection/constant/transportProperties:water
+multiphase/interFoam/laminar/mixerVessel2D/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/mixerVessel2D/system/fvSolution:    alpha.water
+multiphase/interFoam/laminar/mixerVessel2D/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/mixerVessel2D/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/mixerVessel2D/constant/transportProperties:phases          (water oil);
+multiphase/interFoam/laminar/mixerVessel2D/constant/transportProperties:water
+multiphase/interFoam/laminar/sloshingCylinder/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/sloshingCylinder/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/sloshingCylinder/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/sloshingCylinder/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/sloshingCylinder/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/sloshingCylinder/constant/transportProperties:water
+multiphase/interFoam/laminar/sloshingTank2D3DoF/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/sloshingTank2D3DoF/system/fvSolution:    alpha.water
+multiphase/interFoam/laminar/sloshingTank2D3DoF/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/sloshingTank2D3DoF/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/sloshingTank2D3DoF/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/sloshingTank2D3DoF/constant/transportProperties:water
+multiphase/interFoam/laminar/sloshingTank2D/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/sloshingTank2D/system/fvSolution:    alpha.water
+multiphase/interFoam/laminar/sloshingTank2D/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/sloshingTank2D/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/sloshingTank2D/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/sloshingTank2D/constant/transportProperties:water
+multiphase/interFoam/laminar/sloshingTank3D6DoF/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/sloshingTank3D6DoF/system/fvSolution:    alpha.water
+multiphase/interFoam/laminar/sloshingTank3D6DoF/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/sloshingTank3D6DoF/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/sloshingTank3D6DoF/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/sloshingTank3D6DoF/constant/transportProperties:water
+multiphase/interFoam/laminar/sloshingTank3D/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/sloshingTank3D/system/fvSolution:    alpha.water
+multiphase/interFoam/laminar/sloshingTank3D/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/sloshingTank3D/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/sloshingTank3D/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/sloshingTank3D/constant/transportProperties:water
+multiphase/interFoam/laminar/damBreakPermeable/0.orig/U:        alpha           alpha.water;
+multiphase/interFoam/laminar/damBreakPermeable/0.orig/p_rgh:        alpha           alpha.water;
+multiphase/interFoam/laminar/damBreakPermeable/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/damBreakPermeable/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/damBreakPermeable/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/damBreakPermeable/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/damBreakPermeable/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/damBreakPermeable/constant/transportProperties:water
+multiphase/interFoam/laminar/oscillatingBox/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/oscillatingBox/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/oscillatingBox/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/oscillatingBox/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/oscillatingBox/constant/dynamicMeshDict:field           alpha.water;
+multiphase/interFoam/laminar/oscillatingBox/constant/dynamicMeshDict:    (alphaPhi0.water none)
+multiphase/interFoam/laminar/oscillatingBox/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/oscillatingBox/constant/transportProperties:water
+multiphase/interFoam/laminar/sloshingTank3D3DoF/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/sloshingTank3D3DoF/system/fvSolution:    alpha.water
+multiphase/interFoam/laminar/sloshingTank3D3DoF/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/sloshingTank3D3DoF/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/sloshingTank3D3DoF/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/sloshingTank3D3DoF/constant/transportProperties:water
+multiphase/interFoam/laminar/capillaryRise/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/capillaryRise/system/fvSolution:    alpha.water
+multiphase/interFoam/laminar/capillaryRise/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/capillaryRise/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/capillaryRise/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/capillaryRise/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/mangroveInteraction/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/mangroveInteraction/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/mangroveInteraction/system/controlDict:            alpha.water
+multiphase/interFoam/laminar/waves/mangroveInteraction/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/mangroveInteraction/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/waves/mangroveInteraction/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/mangroveInteraction/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/mangroveInteraction/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/mangroveInteraction/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/waveMakerSolitary/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/waveMakerSolitary/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/waveMakerSolitary/system/controlDict:            p p_rgh U alpha.water
+multiphase/interFoam/laminar/waves/waveMakerSolitary/system/controlDict:            p p_rgh U alpha.water
+multiphase/interFoam/laminar/waves/waveMakerSolitary/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/waveMakerSolitary/system/setFieldsDict:        fieldValues ( volScalarFieldValue alpha.water 1 );
+multiphase/interFoam/laminar/waves/waveMakerSolitary/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/waveMakerSolitary/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/waveMakerSolitary/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/cnoidal/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/cnoidal/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/cnoidal/system/controlDict:            alpha.water
+multiphase/interFoam/laminar/waves/cnoidal/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/cnoidal/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/waves/cnoidal/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/cnoidal/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/cnoidal/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/cnoidal/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/streamFunction/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/streamFunction/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/streamFunction/system/controlDict:            alpha.water
+multiphase/interFoam/laminar/waves/streamFunction/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/streamFunction/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/waves/streamFunction/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/streamFunction/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/streamFunction/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/streamFunction/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/solitaryMcCowan/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/solitaryMcCowan/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/solitaryMcCowan/system/controlDict:        fields          (alpha.water);
+multiphase/interFoam/laminar/waves/solitaryMcCowan/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/solitaryMcCowan/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/waves/solitaryMcCowan/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/solitaryMcCowan/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/solitaryMcCowan/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/solitaryMcCowan/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/waveMakerFlap/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/waveMakerFlap/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/waveMakerFlap/system/controlDict:        fields          (alpha.water);
+multiphase/interFoam/laminar/waves/waveMakerFlap/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/waveMakerFlap/system/setFieldsDict:        fieldValues ( volScalarFieldValue alpha.water 1 );
+multiphase/interFoam/laminar/waves/waveMakerFlap/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/waveMakerFlap/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/waveMakerFlap/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/solitary/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/solitary/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/solitary/system/controlDict:            U alpha.water
+multiphase/interFoam/laminar/waves/solitary/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/solitary/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/waves/solitary/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/solitary/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/solitary/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/solitary/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/stokesV/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/stokesV/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/stokesV/system/controlDict:            alpha.water
+multiphase/interFoam/laminar/waves/stokesV/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/stokesV/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/waves/stokesV/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/stokesV/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/stokesV/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/stokesV/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddleFlap/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddleFlap/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddleFlap/system/controlDict:        fields          (alpha.water);
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddleFlap/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddleFlap/system/setFieldsDict:        fieldValues ( volScalarFieldValue alpha.water 1 );
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddleFlap/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddleFlap/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddleFlap/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/stokesII/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/stokesII/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/stokesII/system/controlDict:            alpha.water
+multiphase/interFoam/laminar/waves/stokesII/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/stokesII/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/waves/stokesII/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/stokesII/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/stokesII/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/stokesII/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddlePiston/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddlePiston/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddlePiston/system/controlDict:        fields          (alpha.water);
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddlePiston/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddlePiston/system/setFieldsDict:        fieldValues ( volScalarFieldValue alpha.water 1 );
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddlePiston/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddlePiston/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/waveMakerMultiPaddlePiston/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/irregularMultiDirection/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/irregularMultiDirection/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/irregularMultiDirection/system/controlDict:            U alpha.water
+multiphase/interFoam/laminar/waves/irregularMultiDirection/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/irregularMultiDirection/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/waves/irregularMultiDirection/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/irregularMultiDirection/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/irregularMultiDirection/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/irregularMultiDirection/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/stokesI/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/stokesI/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/stokesI/system/controlDict:            alpha.water
+multiphase/interFoam/laminar/waves/stokesI/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/stokesI/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/waves/stokesI/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/stokesI/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/stokesI/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/stokesI/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/solitaryGrimshaw/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/solitaryGrimshaw/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/solitaryGrimshaw/system/controlDict:        fields          (alpha.water);
+multiphase/interFoam/laminar/waves/solitaryGrimshaw/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/solitaryGrimshaw/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/waves/solitaryGrimshaw/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/solitaryGrimshaw/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/solitaryGrimshaw/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/solitaryGrimshaw/constant/transportProperties:water
+multiphase/interFoam/laminar/waves/waveMakerPiston/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/waves/waveMakerPiston/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/laminar/waves/waveMakerPiston/system/controlDict:        fields          (alpha.water);
+multiphase/interFoam/laminar/waves/waveMakerPiston/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/waves/waveMakerPiston/system/setFieldsDict:        fieldValues ( volScalarFieldValue alpha.water 1 );
+multiphase/interFoam/laminar/waves/waveMakerPiston/constant/waveProperties:    alpha           alpha.water;
+multiphase/interFoam/laminar/waves/waveMakerPiston/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/waves/waveMakerPiston/constant/transportProperties:water
+multiphase/interFoam/laminar/testTubeMixer/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/laminar/testTubeMixer/system/fvSolution:    alpha.water
+multiphase/interFoam/laminar/testTubeMixer/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/laminar/testTubeMixer/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/laminar/testTubeMixer/constant/transportProperties:phases          (water air);
+multiphase/interFoam/laminar/testTubeMixer/constant/transportProperties:water
+multiphase/interFoam/RAS/waterChannel/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/RAS/waterChannel/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/RAS/waterChannel/system/controlDict:        phase           alpha.water;
+multiphase/interFoam/RAS/waterChannel/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/RAS/waterChannel/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/waterChannel/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/waterChannel/constant/transportProperties:water
+multiphase/interFoam/RAS/damBreak/damBreak/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/RAS/damBreak/damBreak/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/RAS/damBreak/damBreak/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/RAS/damBreak/damBreak/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/damBreak/damBreak/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/damBreak/damBreak/constant/transportProperties:water
+multiphase/interFoam/RAS/electrostaticDeposition/0.orig/electricPotential:V:            alpha.water
+multiphase/interFoam/RAS/electrostaticDeposition/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/RAS/electrostaticDeposition/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/RAS/electrostaticDeposition/system/FOelectricPotential:        alpha.water
+multiphase/interFoam/RAS/electrostaticDeposition/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/RAS/electrostaticDeposition/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/electrostaticDeposition/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/electrostaticDeposition/constant/transportProperties:water
+multiphase/interFoam/RAS/damBreakPorousBaffle/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/RAS/damBreakPorousBaffle/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/RAS/damBreakPorousBaffle/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/RAS/damBreakPorousBaffle/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/damBreakPorousBaffle/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/damBreakPorousBaffle/constant/transportProperties:water
+multiphase/interFoam/RAS/DTCHull/0.orig/U:        alpha           alpha.water;
+multiphase/interFoam/RAS/DTCHull/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/RAS/DTCHull/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/RAS/DTCHull/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/DTCHull/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/DTCHull/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/DTCHull/constant/transportProperties:water
+multiphase/interFoam/RAS/motorBike/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/RAS/motorBike/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/RAS/motorBike/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/RAS/motorBike/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/motorBike/constant/dynamicMeshDict:    field           alpha.water;
+multiphase/interFoam/RAS/motorBike/constant/dynamicMeshDict:        (alphaPhi0.water none)
+multiphase/interFoam/RAS/motorBike/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/motorBike/constant/transportProperties:water
+multiphase/interFoam/RAS/floatingObject/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/RAS/floatingObject/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/RAS/floatingObject/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/RAS/floatingObject/system/setFieldsDict:        fieldValues ( volScalarFieldValue alpha.water 1 );
+multiphase/interFoam/RAS/floatingObject/system/setFieldsDict:        fieldValues ( volScalarFieldValue alpha.water 1 );
+multiphase/interFoam/RAS/floatingObject/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/floatingObject/constant/transportProperties:water
+multiphase/interFoam/RAS/DTCHullMoving/0.orig/U:        alpha           alpha.water;
+multiphase/interFoam/RAS/DTCHullMoving/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/RAS/DTCHullMoving/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/RAS/DTCHullMoving/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/DTCHullMoving/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/DTCHullMoving/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/DTCHullMoving/constant/transportProperties:water
+multiphase/interFoam/RAS/weirOverflow/0.orig/U:        alpha           alpha.water;
+multiphase/interFoam/RAS/weirOverflow/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/RAS/weirOverflow/system/fvSolution:    alpha.water
+multiphase/interFoam/RAS/weirOverflow/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interFoam/RAS/weirOverflow/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/weirOverflow/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/weirOverflow/constant/transportProperties:water
+multiphase/interFoam/RAS/angledDuct/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/RAS/angledDuct/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/RAS/angledDuct/system/controlDict:        phase           alpha.water;
+multiphase/interFoam/RAS/angledDuct/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/angledDuct/constant/transportProperties:water
+multiphase/interFoam/RAS/mixerVesselAMI/0.orig/alpha.water:    object      alpha.water;
+multiphase/interFoam/RAS/mixerVesselAMI/system/fvSolution:    "alpha.water.*"
+multiphase/interFoam/RAS/mixerVesselAMI/system/setFieldsDict:    volScalarFieldValue alpha.water 1
+multiphase/interFoam/RAS/mixerVesselAMI/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/interFoam/RAS/mixerVesselAMI/constant/transportProperties:phases          (water air);
+multiphase/interFoam/RAS/mixerVesselAMI/constant/transportProperties:water
+multiphase/overInterPhaseChangeDyMFoam/twoSimpleRotors/0.orig/alpha.water:    object      alpha.water;
+multiphase/overInterPhaseChangeDyMFoam/twoSimpleRotors/system/fvSolution:    "alpha.water.*"
+multiphase/overInterPhaseChangeDyMFoam/twoSimpleRotors/system/fvSchemes:    div(phi,alpha.water) Gauss upwind;
+multiphase/overInterPhaseChangeDyMFoam/twoSimpleRotors/system/setFieldsDict:    volScalarFieldValue alpha.water 1
+multiphase/overInterPhaseChangeDyMFoam/twoSimpleRotors/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/overInterPhaseChangeDyMFoam/twoSimpleRotors/constant/transportProperties:phases          (water vapour);
+multiphase/overInterPhaseChangeDyMFoam/twoSimpleRotors/constant/transportProperties:water
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/0.orig/alpha.water:    object      alpha.water;
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/constant/thermophysicalProperties:phases          (water oil mercury air);
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/constant/thermophysicalProperties:    (air water)     0.07
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/constant/thermophysicalProperties:    (water oil)     0.07
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/constant/thermophysicalProperties:    (water mercury) 0.07
+multiphase/compressibleMultiphaseInterFoam/laminar/damBreak4phase/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/multiphaseEulerFoam/bubbleColumn/0.orig/U.water:    object      U.water;
+multiphase/multiphaseEulerFoam/bubbleColumn/0.orig/U.water:        phi                phi.water;
+multiphase/multiphaseEulerFoam/bubbleColumn/0.orig/alpha.water:    object      alpha.water;
+multiphase/multiphaseEulerFoam/bubbleColumn/0.orig/alpha.water:        phi             phi.water;
+multiphase/multiphaseEulerFoam/bubbleColumn/0.orig/T.water:    object      T.water;
+multiphase/multiphaseEulerFoam/bubbleColumn/0.orig/T.water:        phi                phi.water;
+multiphase/multiphaseEulerFoam/bubbleColumn/system/controlDict:            U.water
+multiphase/multiphaseEulerFoam/bubbleColumn/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/multiphaseEulerFoam/bubbleColumn/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/multiphaseEulerFoam/bubbleColumn/constant/transportProperties:    water
+multiphase/multiphaseEulerFoam/bubbleColumn/constant/transportProperties:    (air water)     0.5
+multiphase/multiphaseEulerFoam/bubbleColumn/constant/transportProperties:    (air water)
+multiphase/multiphaseEulerFoam/bubbleColumn/constant/transportProperties:        water
+multiphase/multiphaseEulerFoam/mixerVessel2D/0.orig/U.water:    object      U.water;
+multiphase/multiphaseEulerFoam/mixerVessel2D/0.orig/alpha.water:    object      alpha.water;
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:     water
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (air water)     0.07
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (water oil)     0
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (water mercury) 0
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (air water)     0
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (water oil)     0
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (water mercury) 0
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (air water)     0.5
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (water oil)     0.5
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (water mercury) 0.5
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (air water)
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:        water
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (water oil)
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:        water
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:    (water mercury)
+multiphase/multiphaseEulerFoam/mixerVessel2D/constant/transportProperties:        water
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/U.water:    object      U.water;
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/0.orig/alpha.water:    object      alpha.water;
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/constant/transportProperties:     water
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/constant/transportProperties:    (air water)     0.07
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/constant/transportProperties:    (air water)     1
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/constant/transportProperties:    (air water)
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/constant/transportProperties:        water
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/constant/transportProperties:    (water oil)
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/constant/transportProperties:        water
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/constant/transportProperties:    (water mercury)
+multiphase/multiphaseEulerFoam/damBreak4phaseFine/constant/transportProperties:        water
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/alpha.air:            ( water air ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/alpha.air:            ( water oil ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/alpha.air:            ( water mercury ) 90 0 0 0
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/U.water:    object      U.water;
+multiphase/multiphaseEulerFoam/damBreak4phase/0.orig/alpha.water:    object      alpha.water;
+multiphase/multiphaseEulerFoam/damBreak4phase/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/multiphaseEulerFoam/damBreak4phase/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/multiphaseEulerFoam/damBreak4phase/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/multiphaseEulerFoam/damBreak4phase/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/multiphaseEulerFoam/damBreak4phase/constant/transportProperties:     water
+multiphase/multiphaseEulerFoam/damBreak4phase/constant/transportProperties:    (air water)     0.07
+multiphase/multiphaseEulerFoam/damBreak4phase/constant/transportProperties:    (air water)     1
+multiphase/multiphaseEulerFoam/damBreak4phase/constant/transportProperties:    (air water)
+multiphase/multiphaseEulerFoam/damBreak4phase/constant/transportProperties:        water
+multiphase/multiphaseEulerFoam/damBreak4phase/constant/transportProperties:    (water oil)
+multiphase/multiphaseEulerFoam/damBreak4phase/constant/transportProperties:        water
+multiphase/multiphaseEulerFoam/damBreak4phase/constant/transportProperties:    (water mercury)
+multiphase/multiphaseEulerFoam/damBreak4phase/constant/transportProperties:        water
+multiphase/compressibleInterFoam/laminar/depthCharge2D/0.orig/alpha.water:    object      alpha.water;
+multiphase/compressibleInterFoam/laminar/depthCharge2D/system/fvSolution:    "alpha.water.*"
+multiphase/compressibleInterFoam/laminar/depthCharge2D/system/setFieldsDict:    volScalarFieldValue alpha.water 1
+multiphase/compressibleInterFoam/laminar/depthCharge2D/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/compressibleInterFoam/laminar/depthCharge2D/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/compressibleInterFoam/laminar/depthCharge2D/constant/thermophysicalProperties:phases          (water air);
+multiphase/compressibleInterFoam/laminar/waterCooler/fluid/0.orig/alpha.water:    object      alpha.water;
+multiphase/compressibleInterFoam/laminar/waterCooler/fluid/system/fvSolution:    "alpha.water.*"
+multiphase/compressibleInterFoam/laminar/waterCooler/fluid/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/compressibleInterFoam/laminar/waterCooler/fluid/system/setFieldsDict:    //        volScalarFieldValue alpha.water 0
+multiphase/compressibleInterFoam/laminar/waterCooler/fluid/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/compressibleInterFoam/laminar/waterCooler/fluid/constant/thermophysicalProperties:phases          (water air);
+multiphase/compressibleInterFoam/laminar/waterCooler/README.txt:to demonstrate cooling a solid block with water. WIP.
+multiphase/compressibleInterFoam/laminar/depthCharge3D/0.orig/alpha.water:    object      alpha.water;
+multiphase/compressibleInterFoam/laminar/depthCharge3D/system/fvSolution:    "alpha.water.*"
+multiphase/compressibleInterFoam/laminar/depthCharge3D/system/setFieldsDict:    volScalarFieldValue alpha.water 1
+multiphase/compressibleInterFoam/laminar/depthCharge3D/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/compressibleInterFoam/laminar/depthCharge3D/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/compressibleInterFoam/laminar/depthCharge3D/constant/thermophysicalProperties:phases          (water air);
+multiphase/MPPICInterFoam/twoPhasePachuka/Allrun:# Set alpha.water
+multiphase/MPPICInterFoam/twoPhasePachuka/0.orig/alpha.water:    object      alpha.water;
+multiphase/MPPICInterFoam/twoPhasePachuka/system/fvSolution:    "alpha.water.*"
+multiphase/MPPICInterFoam/twoPhasePachuka/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/MPPICInterFoam/twoPhasePachuka/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/MPPICInterFoam/twoPhasePachuka/constant/kinematicCloudProperties:            alpha        alpha.water;
+multiphase/MPPICInterFoam/twoPhasePachuka/constant/transportProperties:phases          (water air);
+multiphase/MPPICInterFoam/twoPhasePachuka/constant/transportProperties:water
+multiphase/cavitatingFoam/RAS/throttle/constant/transportProperties:phases (vapour water);
+multiphase/cavitatingFoam/RAS/throttle/constant/transportProperties:water
+multiphase/cavitatingFoam/LES/throttle/constant/transportProperties:phases (vapour water);
+multiphase/cavitatingFoam/LES/throttle/constant/transportProperties:water
+multiphase/cavitatingFoam/LES/throttle3D/constant/transportProperties:phases (vapour water);
+multiphase/cavitatingFoam/LES/throttle3D/constant/transportProperties:water
+multiphase/interPhaseChangeDyMFoam/propeller/0.orig/alpha.water:    object      alpha.water;
+multiphase/interPhaseChangeDyMFoam/propeller/system/fvSolution:    "alpha.water.*"
+multiphase/interPhaseChangeDyMFoam/propeller/constant/transportProperties:phases          (water vapour);
+multiphase/interPhaseChangeDyMFoam/propeller/constant/transportProperties:water
+multiphase/icoReactingMultiphaseInterFoam/inertMultiphaseMultiComponent/0.orig/water.liquid:    object      water.liquid;
+multiphase/icoReactingMultiphaseInterFoam/inertMultiphaseMultiComponent/system/setFieldsDict:    volScalarFieldValue water.liquid    1
+multiphase/icoReactingMultiphaseInterFoam/inertMultiphaseMultiComponent/system/setFieldsDict:            volScalarFieldValue water.liquid    0.99
+multiphase/icoReactingMultiphaseInterFoam/inertMultiphaseMultiComponent/constant/thermophysicalProperties.liquid:    water
+multiphase/icoReactingMultiphaseInterFoam/inertMultiphaseMultiComponent/constant/thermophysicalProperties.liquid:inertSpecie  water;
+multiphase/icoReactingMultiphaseInterFoam/inertMultiphaseMultiComponent/constant/thermophysicalProperties.liquid:water
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/0.orig/U.water:    object      U.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/0.orig/U.water:        phi                phi.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/0.orig/alpha.water:    object      alpha.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/0.orig/alpha.water:        phi             phi.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/0.orig/T.water:    object      T.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/0.orig/T.water:        phi                phi.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/system/controlDict:            U.water
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/system/fvSchemes:    div(phi,alpha.water)            Gauss vanLeer;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/system/fvSchemes:    div(phir,alpha.water,alpha.air) Gauss vanLeer;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/system/fvSchemes:    div(phir,alpha.air,alpha.water) Gauss vanLeer;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:phases          (air water);
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:water
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.3;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.5;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/bubbleColumn/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/0.orig/U.water:    object      U.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/0.orig/alpha.water:    object      alpha.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/0.orig/T.water:    object      T.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:phases          (water oil mercury air);
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:water
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.5;
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:        minFullyContinuousAlpha.water 0.7;
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:        minPartlyContinuousAlpha.water 0.3;
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air and water)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water and oil)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water and mercury)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air and water)     0
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water and oil)     0
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water and mercury) 0
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in air)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air and water)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in oil)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (oil in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water and oil)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in mercury)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (mercury in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water and mercury)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in air)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in oil)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (oil in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in mercury)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (mercury in water)
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/reactingMultiphaseEulerFoam/laminar/mixerVessel2D/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/reactingMultiphaseEulerFoam/RAS/wallBoiling1D_2phase/constant/phaseProperties:            file                "Tsat_water_1_2bar.csv";
+multiphase/reactingMultiphaseEulerFoam/RAS/wallBoiling1D_2phase/constant/turbulenceProperties.liquid:    object      turbulenceProperties.water;
+multiphase/reactingMultiphaseEulerFoam/RAS/wallBoiling1D_3phase/constant/turbulenceProperties.liquid:    object      turbulenceProperties.water;
+multiphase/compressibleInterIsoFoam/laminar/depthCharge2D/0.orig/alpha.water:    object      alpha.water;
+multiphase/compressibleInterIsoFoam/laminar/depthCharge2D/system/fvSolution:    "alpha.water.*"
+multiphase/compressibleInterIsoFoam/laminar/depthCharge2D/system/setAlphaFieldDict:field alpha.water;
+multiphase/compressibleInterIsoFoam/laminar/depthCharge2D/system/fvSchemes:    div(phi,thermo:rho.water) Gauss upwind;
+multiphase/compressibleInterIsoFoam/laminar/depthCharge2D/constant/thermophysicalProperties:phases          (water air);
+multiphase/compressibleInterIsoFoam/laminar/depthCharge3D/0.orig/alpha.water:    object      alpha.water;
+multiphase/compressibleInterIsoFoam/laminar/depthCharge3D/system/fvSolution:    "alpha.water.*"
+multiphase/compressibleInterIsoFoam/laminar/depthCharge3D/system/fvSchemes:    div(phi,thermo:rho.water) Gauss upwind;
+multiphase/compressibleInterIsoFoam/laminar/depthCharge3D/system/setFieldsDict:    volScalarFieldValue alpha.water 1
+multiphase/compressibleInterIsoFoam/laminar/depthCharge3D/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/compressibleInterIsoFoam/laminar/depthCharge3D/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/compressibleInterIsoFoam/laminar/depthCharge3D/constant/thermophysicalProperties:phases          (water air);
+multiphase/interMixingFoam/laminar/damBreak/0.orig/alpha.water:    object      alpha.water;
+multiphase/interMixingFoam/laminar/damBreak/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interMixingFoam/laminar/damBreak/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interMixingFoam/laminar/damBreak/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/interMixingFoam/laminar/damBreak/constant/transportProperties:phases          (air other water);
+multiphase/interMixingFoam/laminar/damBreak/constant/transportProperties:water
+multiphase/overCompressibleInterDyMFoam/compressibleTwoSimpleRotors/0.orig/alpha.water:    object      alpha.water;
+multiphase/overCompressibleInterDyMFoam/compressibleTwoSimpleRotors/system/fvSolution:    "alpha.water.*"
+multiphase/overCompressibleInterDyMFoam/compressibleTwoSimpleRotors/system/fvSchemes:    div(phi,alpha.water) Gauss upwind;
+multiphase/overCompressibleInterDyMFoam/compressibleTwoSimpleRotors/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/overCompressibleInterDyMFoam/compressibleTwoSimpleRotors/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/overCompressibleInterDyMFoam/compressibleTwoSimpleRotors/constant/thermophysicalProperties:phases          (water air);
+multiphase/compressibleInterDyMFoam/laminar/sloshingTank2D/0.orig/alpha.water:    object      alpha.water;
+multiphase/compressibleInterDyMFoam/laminar/sloshingTank2D/system/fvSolution:    alpha.water
+multiphase/compressibleInterDyMFoam/laminar/sloshingTank2D/system/fvSchemes:    div(phi,thermo:rho.water)    Gauss linear;
+multiphase/compressibleInterDyMFoam/laminar/sloshingTank2D/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/compressibleInterDyMFoam/laminar/sloshingTank2D/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/compressibleInterDyMFoam/laminar/sloshingTank2D/constant/thermophysicalProperties:phases          (water air);
+multiphase/compressibleInterDyMFoam/laminar/sloshingTank2D/constant/transportProperties:phases (water air);
+multiphase/compressibleInterDyMFoam/laminar/sloshingTank2D/constant/transportProperties:water
+multiphase/compressibleInterDyMFoam/laminar/sphereDrop/0.orig/T.water:    object      T.water;
+multiphase/compressibleInterDyMFoam/laminar/sphereDrop/system/fvSolution:    "alpha.water.*"
+multiphase/compressibleInterDyMFoam/laminar/sphereDrop/system/fvSchemes:    div(phi,thermo:rho.water) Gauss linear;
+multiphase/compressibleInterDyMFoam/laminar/sphereDrop/system/setFieldsDict:    volScalarFieldValue alpha.water 0 // Air
+multiphase/compressibleInterDyMFoam/laminar/sphereDrop/system/setFieldsDict:            volScalarFieldValue alpha.water 1 // Water
+multiphase/compressibleInterDyMFoam/laminar/sphereDrop/constant/thermophysicalProperties:phases          (water air);
+multiphase/compressibleInterDyMFoam/laminar/sphereDrop/constant/transportProperties:phases (water air);
+multiphase/compressibleInterDyMFoam/laminar/sphereDrop/constant/transportProperties:water
+multiphase/overInterDyMFoam/floatingBodyWithSpring/background/0.orig/alpha.water:    object      alpha.water;
+multiphase/overInterDyMFoam/floatingBodyWithSpring/background/system/fvSolution:    "alpha.water.*"
+multiphase/overInterDyMFoam/floatingBodyWithSpring/background/system/fvSchemes:    alpha.water;
+multiphase/overInterDyMFoam/floatingBodyWithSpring/background/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/overInterDyMFoam/floatingBodyWithSpring/background/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/overInterDyMFoam/floatingBodyWithSpring/background/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/overInterDyMFoam/floatingBodyWithSpring/background/constant/transportProperties:phases          (water air);
+multiphase/overInterDyMFoam/floatingBodyWithSpring/background/constant/transportProperties:water
+multiphase/overInterDyMFoam/floatingBodyWithSpring/floatingBody/system/fvSolution:    "alpha.water.*"
+multiphase/overInterDyMFoam/floatingBodyWithSpring/floatingBody/system/fvSchemes:    alpha.water;
+multiphase/overInterDyMFoam/simpleRotor/0.orig/alpha.water:    object      alpha.water;
+multiphase/overInterDyMFoam/simpleRotor/system/fvSolution:    "alpha.water.*"
+multiphase/overInterDyMFoam/simpleRotor/system/controlDict:        fields          (alpha.water);
+multiphase/overInterDyMFoam/simpleRotor/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/overInterDyMFoam/simpleRotor/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/overInterDyMFoam/simpleRotor/constant/transportProperties:phases          (water air);
+multiphase/overInterDyMFoam/simpleRotor/constant/transportProperties:water
+multiphase/overInterDyMFoam/rigidBodyHull/background/0.orig/alpha.water:    object      alpha.water;
+multiphase/overInterDyMFoam/rigidBodyHull/background/system/fvSolution:    "alpha.water.*"
+multiphase/overInterDyMFoam/rigidBodyHull/background/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/overInterDyMFoam/rigidBodyHull/background/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/overInterDyMFoam/rigidBodyHull/background/constant/transportProperties:phases          (water air);
+multiphase/overInterDyMFoam/rigidBodyHull/background/constant/transportProperties:water
+multiphase/overInterDyMFoam/twoSimpleRotors/0.orig/alpha.water:    object      alpha.water;
+multiphase/overInterDyMFoam/twoSimpleRotors/system/fvSolution:    "alpha.water.*"
+multiphase/overInterDyMFoam/twoSimpleRotors/system/controlDict:                mesh().lookupObject<volScalarField>("alpha.water");
+multiphase/overInterDyMFoam/twoSimpleRotors/system/fvSchemes:    div(phi,alpha.water) Gauss upwind;
+multiphase/overInterDyMFoam/twoSimpleRotors/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/overInterDyMFoam/twoSimpleRotors/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/overInterDyMFoam/twoSimpleRotors/constant/transportProperties:phases          (water air);
+multiphase/overInterDyMFoam/twoSimpleRotors/constant/transportProperties:water
+multiphase/overInterDyMFoam/floatingBody/background/0.orig/alpha.water:    object      alpha.water;
+multiphase/overInterDyMFoam/floatingBody/background/system/fvSolution:    "alpha.water.*"
+multiphase/overInterDyMFoam/floatingBody/background/system/controlDict:        fields          (alpha.water);
+multiphase/overInterDyMFoam/floatingBody/background/system/fvSchemes:    alpha.water;
+multiphase/overInterDyMFoam/floatingBody/background/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/overInterDyMFoam/floatingBody/background/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/overInterDyMFoam/floatingBody/background/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/overInterDyMFoam/floatingBody/background/constant/transportProperties:phases          (water air);
+multiphase/overInterDyMFoam/floatingBody/background/constant/transportProperties:water
+multiphase/overInterDyMFoam/floatingBody/floatingBody/system/fvSolution:    "alpha.water.*"
+multiphase/overInterDyMFoam/floatingBody/floatingBody/system/fvSchemes:    alpha.water;
+multiphase/overInterDyMFoam/twoSquaresOutDomain/0.orig/alpha.water:    object      alpha.water;
+multiphase/overInterDyMFoam/twoSquaresOutDomain/system/fvSolution:    "alpha.water.*"
+multiphase/overInterDyMFoam/twoSquaresOutDomain/system/controlDict:        fields          (alpha.water);
+multiphase/overInterDyMFoam/twoSquaresOutDomain/system/fvSchemes:    div(phi,alpha.water) Gauss upwind;
+multiphase/overInterDyMFoam/twoSquaresOutDomain/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/overInterDyMFoam/twoSquaresOutDomain/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/overInterDyMFoam/twoSquaresOutDomain/constant/transportProperties:phases (water air);
+multiphase/overInterDyMFoam/twoSquaresOutDomain/constant/transportProperties:water
+multiphase/interIsoFoam/damBreakWithObstacle/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/damBreakWithObstacle/system/fvSolution:    "alpha.water.*"
+multiphase/interIsoFoam/damBreakWithObstacle/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interIsoFoam/damBreakWithObstacle/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interIsoFoam/damBreakWithObstacle/constant/dynamicMeshDict:field           alpha.water;
+multiphase/interIsoFoam/damBreakWithObstacle/constant/transportProperties:phases (water air);
+multiphase/interIsoFoam/damBreakWithObstacle/constant/transportProperties:water
+multiphase/interIsoFoam/damBreak/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/damBreak/system/fvSolution:    "alpha.water.*"
+multiphase/interIsoFoam/damBreak/system/fvSchemes:    alpha.water;
+multiphase/interIsoFoam/damBreak/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interIsoFoam/damBreak/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interIsoFoam/damBreak/constant/transportProperties:phases (water air);
+multiphase/interIsoFoam/damBreak/constant/transportProperties:water
+multiphase/interIsoFoam/standingWave/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/standingWave/system/setAlphaFieldDict:field       alpha.water;
+multiphase/interIsoFoam/standingWave/system/fvSchemes:    alpha.water;
+multiphase/interIsoFoam/standingWave/constant/transportProperties:phases (water air);
+multiphase/interIsoFoam/standingWave/constant/transportProperties:water
+multiphase/interIsoFoam/sloshingTank2D/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/sloshingTank2D/system/fvSolution:    alpha.water
+multiphase/interIsoFoam/sloshingTank2D/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interIsoFoam/sloshingTank2D/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interIsoFoam/sloshingTank2D/constant/transportProperties:phases          (water air);
+multiphase/interIsoFoam/sloshingTank2D/constant/transportProperties:water
+multiphase/interIsoFoam/waveExampleStreamFunction/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/waveExampleStreamFunction/system/fvSolution:    "alpha.water.*"
+multiphase/interIsoFoam/waveExampleStreamFunction/system/controlDict:            U alpha.water
+multiphase/interIsoFoam/waveExampleStreamFunction/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interIsoFoam/waveExampleStreamFunction/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interIsoFoam/waveExampleStreamFunction/constant/waveProperties:    alpha           alpha.water;
+multiphase/interIsoFoam/waveExampleStreamFunction/constant/waveProperties:    alpha           alpha.water;
+multiphase/interIsoFoam/waveExampleStreamFunction/constant/transportProperties:phases          (water air);
+multiphase/interIsoFoam/waveExampleStreamFunction/constant/transportProperties:water
+multiphase/interIsoFoam/discInConstantFlowCyclicBCs/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/discInConstantFlowCyclicBCs/system/fvSolution:    "alpha.water.*"
+multiphase/interIsoFoam/discInConstantFlowCyclicBCs/system/setAlphaFieldDict:field     "alpha.water";
+multiphase/interIsoFoam/discInConstantFlowCyclicBCs/constant/transportProperties:phases (water air);
+multiphase/interIsoFoam/discInConstantFlowCyclicBCs/constant/transportProperties:water
+multiphase/interIsoFoam/iobasin/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/iobasin/system/fvSolution:    "alpha.water.*"
+multiphase/interIsoFoam/iobasin/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interIsoFoam/iobasin/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interIsoFoam/iobasin/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interIsoFoam/iobasin/constant/transportProperties:phases (water air);
+multiphase/interIsoFoam/iobasin/constant/transportProperties:water
+multiphase/interIsoFoam/sphereInReversedVortexFlow/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/sphereInReversedVortexFlow/system/setAlphaFieldDict:field       "alpha.water";
+multiphase/interIsoFoam/sphereInReversedVortexFlow/constant/transportProperties:phases (water air);
+multiphase/interIsoFoam/sphereInReversedVortexFlow/constant/transportProperties:water
+multiphase/interIsoFoam/discInReversedVortexFlow/system/setAlphaFieldDict:field       "alpha.water";
+multiphase/interIsoFoam/discInReversedVortexFlow/constant/transportProperties:phases (water air);
+multiphase/interIsoFoam/discInReversedVortexFlow/constant/transportProperties:water
+multiphase/interIsoFoam/notchedDiscInSolidBodyRotation/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/notchedDiscInSolidBodyRotation/system/setAlphaFieldDict:field           alpha.water;
+multiphase/interIsoFoam/notchedDiscInSolidBodyRotation/system/setFieldsDict:            volScalarFieldValue alpha.water 0
+multiphase/interIsoFoam/notchedDiscInSolidBodyRotation/constant/transportProperties:phases          (water air);
+multiphase/interIsoFoam/notchedDiscInSolidBodyRotation/constant/transportProperties:water
+multiphase/interIsoFoam/discInConstantPorousFlow/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/discInConstantPorousFlow/system/setAlphaFieldDict:field           alpha.water;
+multiphase/interIsoFoam/discInConstantPorousFlow/constant/transportProperties:phases          (water air);
+multiphase/interIsoFoam/discInConstantPorousFlow/constant/transportProperties:water
+multiphase/interIsoFoam/weirOverflow/0.orig/U:        alpha           alpha.water;
+multiphase/interIsoFoam/weirOverflow/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/weirOverflow/system/fvSolution:    alpha.water
+multiphase/interIsoFoam/weirOverflow/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+multiphase/interIsoFoam/weirOverflow/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+multiphase/interIsoFoam/weirOverflow/constant/transportProperties:phases (water air);
+multiphase/interIsoFoam/weirOverflow/constant/transportProperties:water
+multiphase/interIsoFoam/discInConstantFlow/0.orig/alpha.water:    object      alpha.water;
+multiphase/interIsoFoam/discInConstantFlow/system/setAlphaFieldDict:field           alpha.water;
+multiphase/interIsoFoam/discInConstantFlow/constant/transportProperties:phases          (water air);
+multiphase/interIsoFoam/discInConstantFlow/constant/transportProperties:water
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/0.orig/U.water:    object      U.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/0.orig/U.water:        phi                phi.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/0.orig/T.water:    object      T.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/0.orig/T.water:        phi                phi.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/system/controlDict:        fields          (U.air U.water);
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/system/controlDict:            U.water
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:phases          (air water);
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:water
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:        maxFullyDispersedAlpha.water 0.3;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:        maxPartlyDispersedAlpha.water 0.5;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air and water)     0.07
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumn/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/0.orig/U.water:    object      U.water;
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/0.orig/T.water:    object      T.water;
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:phases          (air water);
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:water
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:        maxFullyDispersedAlpha.water 0.3;
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:        maxPartlyDispersedAlpha.water 0.5;
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air and water)     0.07
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air and water)
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/twoPhaseEulerFoam/laminar/mixerVessel2D/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/0.orig/U.water:    object      U.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/0.orig/U.water:        phi                phi.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/0.orig/T.water:    object      T.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/0.orig/T.water:        phi                phi.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/system/controlDict:            U.water
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:phases          (air water);
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:water
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:        maxFullyDispersedAlpha.water 0.3;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:        maxPartlyDispersedAlpha.water 0.5;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air and water)     0.07
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air and water)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/twoPhaseEulerFoam/laminar/bubbleColumnIATE/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/twoPhaseEulerFoam/laminar/injection/0.orig/U.water:    object      U.water;
+multiphase/twoPhaseEulerFoam/laminar/injection/0.orig/U.water:        phi                phi.water;
+multiphase/twoPhaseEulerFoam/laminar/injection/0.orig/T.water:    object      T.water;
+multiphase/twoPhaseEulerFoam/laminar/injection/0.orig/T.water:        phi                phi.water;
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:phases          (air water);
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:water
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:        maxFullyDispersedAlpha.water 0.3;
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:        maxPartlyDispersedAlpha.water 0.5;
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air and water)     0.07
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air and water)
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/twoPhaseEulerFoam/laminar/injection/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/0.orig/alphat.water:    object      alphat.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/0.orig/epsilon.water:    object      epsilon.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/0.orig/epsilon.water:        phi             phi.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/0.orig/nut.water:    object      nut.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/0.orig/U.water:    object      U.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/0.orig/U.water:        phi                phi.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/0.orig/k.water:    object      k.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/0.orig/k.water:        phi             phi.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/0.orig/T.water:    object      T.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/0.orig/T.water:        phi                phi.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/system/controlDict:            U.water
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:phases          (air water);
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:water
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:        maxFullyDispersedAlpha.water 0.3;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:        maxPartlyDispersedAlpha.water 0.5;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air and water)     0.07
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/twoPhaseEulerFoam/RAS/bubbleColumn/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/0.orig/alphat.water:    object      alphat.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/0.orig/epsilon.water:    object      epsilon.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/0.orig/epsilon.water:        phi             phi.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/0.orig/nut.water:    object      nut.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/0.orig/U.water:    object      U.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/0.orig/U.water:        phi                phi.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/0.orig/k.water:    object      k.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/0.orig/k.water:        phi             phi.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/0.orig/T.water:    object      T.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/0.orig/T.water:        phi                phi.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/system/controlDict:            U.water
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:phases          (air water);
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:water
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:        maxFullyDispersedAlpha.water 0.3;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:        maxPartlyDispersedAlpha.water 0.5;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air and water)     0.07
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air and water)
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (air in water)
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/phaseProperties:    (water in air)
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/thermophysicalProperties.water:    object      thermophysicalProperties.water;
+multiphase/twoPhaseEulerFoam/LES/bubbleColumn/constant/turbulenceProperties.water:    object      turbulenceProperties.water;
+preProcessing/PDRsetFields/simplePipeCage/system/fvSchemes:        water           limitedLinear 1;
+combustion/PDRFoam/pipeLattice/system/fvSchemes:        water       limitedLinear 1;
+combustion/PDRFoam/pipeLattice/constant/thermophysicalProperties:    water
+incompressible/simpleFoam/windAroundBuildings/system/runTimePostProcessing:        watermark
+incompressible/pimpleFoam/laminar/filmPanel0/system/sampling:    fields          (U p hf_film  ); // ( alpha.water p U k omega);
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/0.orig/alpha.water:    object      alpha.water;
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/README.md:    Journal of waterway, port, coastal, and ocean engineering,
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/plot:        "postProcessing/freeSurface/".time[k]."/alpha.water_freeSurface.raw" \
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/system/fvSolution:    "alpha.water.*"
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/system/controlDict:            alpha.water
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/system/controlDict:                isoField    alpha.water;
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/system/controlDict:                isoField    alpha.water;
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/system/controlDict:                isoField    alpha.water;
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/system/fvSchemes:    alpha.water;
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/system/setFieldsDict:    volScalarFieldValue alpha.water 0
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/system/setFieldsDict:            volScalarFieldValue alpha.water 1
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/constant/transportProperties:phases (water air);
+verificationAndValidation/multiphase/interIsoFoam/porousDamBreak/constant/transportProperties:water
+discreteMethods/molecularDynamics/mdFoam/nanoNozzle/system/potentialDict:removalOrder ( water );
+discreteMethods/molecularDynamics/mdFoam/nanoNozzle/system/mdInitialiseDict:        water
+discreteMethods/molecularDynamics/mdFoam/nanoNozzle/system/mdInitialiseDict:        water
+discreteMethods/molecularDynamics/mdFoam/nanoNozzle/system/mdInitialiseDict:        water
+discreteMethods/molecularDynamics/mdFoam/nanoNozzle/constant/moleculeProperties:water
+discreteMethods/molecularDynamics/mdEquilibrationFoam/periodicCubeWater/system/potentialDict:removalOrder ( water );
+discreteMethods/molecularDynamics/mdEquilibrationFoam/periodicCubeWater/system/mdInitialiseDict:        water
+discreteMethods/molecularDynamics/mdEquilibrationFoam/periodicCubeWater/system/mdInitialiseDict:        water2
+discreteMethods/molecularDynamics/mdEquilibrationFoam/periodicCubeWater/system/mdInitialiseDict:        water
+discreteMethods/molecularDynamics/mdEquilibrationFoam/periodicCubeWater/system/mdInitialiseDict:        water2
+discreteMethods/molecularDynamics/mdEquilibrationFoam/periodicCubeWater/constant/moleculeProperties:water
+discreteMethods/molecularDynamics/mdEquilibrationFoam/periodicCubeWater/constant/moleculeProperties:water2
